@@ -8,6 +8,8 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/global';
 import theme from '../styles/theme';
 
+import Provider from '../store';
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -20,8 +22,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <Provider>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   );
